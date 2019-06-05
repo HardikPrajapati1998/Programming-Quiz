@@ -1,0 +1,60 @@
+<%- include('header'); -%>
+
+<style>
+    
+.question{
+    font-weight: 600;
+    font-size: 18px;
+}
+.answers {
+  margin-bottom: 20px;
+}
+.answers label{
+  display: block;
+}
+
+#submit:hover{
+    background-color: #38a;
+}
+</style>
+<div class="lms_page_title">
+        <div class="lms_page_title_bg" data-stellar-vertical-offset="-150" data-stellar-background-ratio="" style="background: url(../wp-content/uploads/2016/03/bg1_new.jpg);">
+           <div class="lms_page_title_bg_overlay">
+              <div class="container">
+                  <div class="lms_title">Courses : C Language</div>
+                      <div class="pull-right"><ol class="breadcrumb"><li><a href="http://kamleshyadav.com/wp/lms-new/">Home</a></li></ol>
+                  </div>
+              </div>
+          </div>
+        </div>
+  </div> 
+  <div class="container">
+        <div class="row">
+               <!--blog categories start-->
+             <div class="col-lg-12 col-md-12 col-sm-12"><article id="post-856" class="post-856 page type-page status-publish hentry">
+        <div class="entry-content">
+
+        <div id="lp-archive-courses" class="lp-archive-courses">
+            
+                <div class="alert alert-danger" role="alert">
+                        <%= email %>
+                      </div>
+                <div id="quiz"></div>
+                <button id="submit" class="lp-button button button-purchase-course">Submit Quiz</button>
+               
+                <div class="alert alert-success">
+                        <strong>Result</strong>  <div id="results"></div>
+                       
+                      
+                      </div>
+                      
+                <script src="\javascripts\c.js"></script>
+            </div>
+            </div>
+            
+            </article>
+        </div>
+            </div>
+            </div>
+            
+<%- include('footer'); -%>

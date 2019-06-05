@@ -1,0 +1,128 @@
+/*
+Copyright (c) 2016 Himanshu Softtech.
+------------------------------------------------------------------
+[Master Stylesheet]
+Project:	Learning Management System WordPress Theme – Just another WordPress site
+Version:	1.0.0
+Assigned to:	Themeforest
+-------------------------------------------------------------------*/
+/* Large desktop */
+@media (min-width: 1200px) {
+}
+@media (min-width:1200px) and (max-width:1260px) {
+}
+@media (min-width:992px) and (max-width:1199px) {
+}
+@media (min-width:768px) and (max-width: 991px) {
+.portfolioFilter ul li a {
+    padding: 30px 10px;
+}
+}
+@media (max-width:767px) {
+.portfolioFilter ul li a {
+    font-size: 14px;
+	padding: 15px 15px;
+}
+.mn_navbar .navbar-toggle {
+    margin: 0;
+    margin: 5px 29px;
+    border: 1px solid #ff9933;
+    background-color: transparent;
+}
+.mn_navbar .navbar-toggle .icon-bar {
+    background-color: #ff9933;
+}
+.mn_navbar nav {
+    display: block;
+    margin-bottom: 0;
+    margin-top: 50px;
+    position: absolute;
+    left: 0;
+    right: 0;
+	z-index: 1;
+}
+.mn_navbar ul {
+    background-color: rgba(0, 0, 0, 0.49);
+    margin: 0 -15px;
+    padding: 10px 0;
+}
+.mn_menu_wrapper ul li a {
+    padding: 10px 15px 8px;
+}
+}
+@media (max-width:667px) {
+.mn_demo_section .col-lg-4.col-md-4.col-sm-6.col-xs-6, .mn_demo_section .col-lg-6.col-md-6.col-sm-6.col-xs-6 {
+    width: 80%;
+    float: none;
+    margin: 0px auto;
+}
+}
+@media (max-width:600px) {
+.mn_heading h1 {
+    font-size: 33px;
+}
+.mn_heading {
+    padding: 20px 0 0px;
+}
+.mn_banner_content {
+    width: 100%;
+    word-wrap: break-word;
+}
+}
+@media (max-width:578px) {
+}
+@media (max-width:480px) {
+.mn_banner {
+	min-height: 350px;
+}
+.mn_demo_section {
+	margin-top: 350px;
+}
+.mn_banner_content {
+	font-size: 70px;
+}
+.mn_demo_section .col-lg-4.col-md-4.col-sm-6.col-xs-6, .mn_demo_section .col-lg-6.col-md-6.col-sm-6.col-xs-6 {
+    width: 90%;
+}
+.mn_logo img {
+    max-width: 100%;
+}
+.mn_cart_wrapper {
+    width: 30%;
+}
+.mn_navbar {
+    width: 30%;
+}
+.mn_logo {
+    width: 40%;
+}
+.mn_logo .navbar-brand {
+    padding: 8px 0px;
+}
+}
+@media (max-width:375px) {
+.mn_banner_content {
+	font-size: 50px;
+}
+.grid-item {
+    width: 90%;
+    margin: 0px auto;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+.mn_demo_section .col-lg-4.col-md-4.col-sm-6.col-xs-6, .mn_demo_section .col-lg-6.col-md-6.col-sm-6.col-xs-6 {
+    width: 100%;
+}
+.demo_detail a {
+    font-size: 15px;
+    padding: 20px 10px;
+}
+.mn_logo .navbar-brand {
+    padding: 10px 0px;
+    opacity: 1;
+}
+}
+@media (max-width:320px) {
+}
+@media (max-width:240px) {
+}

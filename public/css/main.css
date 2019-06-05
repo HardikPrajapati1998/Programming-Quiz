@@ -1,0 +1,14 @@
+/*
+Copyright (c) 2016 Himanshu Softtech.
+------------------------------------------------------------------
+[Master Stylesheet]
+Project:	Learning Management System WordPress Theme – Just another WordPress site
+Version:	1.0.0
+Assigned to:	Themeforest
+-------------------------------------------------------------------*/
+@import url("bootstrap.css");
+@import url("fonts.css");
+@import url("font-awesome.css");
+@import url("animate.css");
+@import url("style.css");
+@import url("responsive.css");

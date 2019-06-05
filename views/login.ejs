@@ -1,0 +1,60 @@
+<%- include('header'); -%>
+<div class="lms_page_title">
+		  <div class="lms_page_title_bg" data-stellar-vertical-offset="-150" data-stellar-background-ratio="" style="background: url(http://kamleshyadav.com/wp/lms-new/wp-content/uploads/2016/03/bg1_new.jpg);">
+			 <div class="lms_page_title_bg_overlay">
+				<div class="container">
+					<div class="lms_title">Login</div>
+						<div class="pull-right"><ol class="breadcrumb"><li><a href="http://kamleshyadav.com/wp/lms-new/">Home</a></li><li>Login</li></ol>
+					</div>
+				</div>
+			</div>
+		  </div>
+	</div> 
+<!--main container start-->
+<div class="container">
+	<div class="row">
+      	 <!--blog categories start-->
+         <div class="col-lg-12 col-md-12 col-sm-12"><article id="post-1163" class="post-1163 page type-page status-publish hentry">
+	<div class="entry-content">
+		<div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<div class="tml tml-login">
+<ul class="tml-errors"><li class="tml-error" style="color: red"><%= email %></li></ul><form name="login" action="/loginprosee" method="post">
+    
+    <div class="tml-field-wrap tml-log-wrap">
+<label class="tml-label" for="user_login"> Email Address</label>
+<input name="User_email" type="text" value="" id="user_login" class="tml-field">
+</div>
+
+<div class="tml-field-wrap tml-pwd-wrap">
+<label class="tml-label" for="user_pass">Password</label>
+<input name="User_password" type="password" value="" id="user_pass" class="tml-field">
+</div>
+
+
+<div class="tml-field-wrap tml-rememberme-wrap">
+	<a href="http://kamleshyadav.com/wp/lms-new/lostpassword/">Lost your password?</a></br>
+	<a href="/register" style="color: green;font-size: 16px">New Register</a>
+</div>
+
+<div class="tml-field-wrap tml-submit-wrap">
+<input name="submit" type="submit" value="Login" class="tml-button">
+</div>
+
+<input name="redirect_to" type="hidden" value="http://kamleshyadav.com/wp/lms-new">
+
+<input name="testcookie" type="hidden" value="1">
+
+</form>
+
+
+		</div>
+	</div>
+</div></div></div></div>
+	</div><!-- .entry-content -->
+	
+</article><!-- #post-## --></div>      </div>    
+</div>
+<!--main container end-->
+<%- include('footer'); -%>
