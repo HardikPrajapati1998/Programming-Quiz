@@ -20,7 +20,10 @@
 	<div class="wpb_text_column wpb_content_element " >
 		<div class="wpb_wrapper">
 			<div class="tml tml-login">
-<ul class="tml-errors"><li class="tml-error" style="color: red"><%= email %></li></ul><form name="login" action="/loginprosee" method="post">
+					<% if (locals.email) { %>
+<ul class="tml-errors"><li class="tml-error" style="color: red"><%= email %></li></ul>
+<% } %>
+<form name="login" action="/loginprosee" method="post">
     
     <div class="tml-field-wrap tml-log-wrap">
 <label class="tml-label" for="user_login"> Email Address</label>
@@ -34,7 +37,7 @@
 
 
 <div class="tml-field-wrap tml-rememberme-wrap">
-	<a href="/lostpassword/">Lost your password?</a></br>
+	<a href="/forgot_password">Lost your password?</a></br>
 	<a href="/register" style="color: green;font-size: 16px">New Register</a>
 </div>
 

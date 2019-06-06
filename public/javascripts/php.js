@@ -60,7 +60,7 @@
       });
   
       // show number of correct answers out of total
-      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} <form  action="/cprosee" class="Start this course-course" method="post">
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} <form  action="/phpprosee" class="Start this course-course" method="post">
       <input type="text"  name="User_marks" value="${numCorrect}" hidden><button class="lp-button button button-purchase-course" style="margin-top:10px;" type="submit">
 			Save And Check Result </button>
    

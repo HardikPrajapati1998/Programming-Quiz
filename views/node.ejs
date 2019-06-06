@@ -34,9 +34,19 @@
         <div class="entry-content">
 
         <div id="lp-archive-courses" class="lp-archive-courses">
+                <% if (locals.email) { %>
+                <div class="alert alert-danger" style="margin-top: 210px;" role="alert"><%= email %></div>
+                
+                    <% } %>
+
                 <div id="quiz"></div>
                 <button id="submit" class="lp-button button button-purchase-course" >Submit Quiz</button>
-                <div id="results"></div>
+                <div class="alert alert-success">
+                        <strong>Result</strong>  <div id="results"></div>
+                       
+                      
+                      </div>
+                      
                 <script src="\javascripts\node.js"></script>
             </div>
             </div>

@@ -1,0 +1,99 @@
+<%- include('header'); -%>
+<html>
+
+        <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                * {
+                  box-sizing: border-box;
+                }
+                
+                #myInput {
+                  background-image: url('/css/searchicon.png');
+                  background-position: 10px 10px;
+                  background-repeat: no-repeat;
+                  width: 100%;
+                  font-size: 16px;
+                  padding: 12px 20px 12px 40px;
+                  border: 1px solid #ddd;
+                  margin-bottom: 12px;
+                }
+                
+               
+                </style>
+                </head>
+    <body>
+
+            <div class="lms_page_title">
+                    <div class="lms_page_title_bg" data-stellar-vertical-offset="-150" data-stellar-background-ratio="" style="background: url(../wp-content/uploads/2016/03/bg1_new.jpg);">
+                       <div class="lms_page_title_bg_overlay">
+                          <div class="container">
+                              <div class="lms_title">Result NODE</div>
+                                  <div class="pull-right"><ol class="breadcrumb"><li><a href="/">Home</a></li><li>Result</li></ol>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+              </div> 
+              <div class="container">
+                    <div class="row">
+                           <!--blog categories start-->
+                         <div class="col-lg-12 col-md-12 col-sm-12"><article id="post-1163" class="post-1163 page type-page status-publish hentry">
+                    <div class="entry-content">
+                        <div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-3"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div><div class="wpb_column vc_column_container vc_col-sm-9"><div class="vc_column-inner"><div class="wpb_wrapper">
+                    <div class="wpb_text_column wpb_content_element " >
+                        <div class="wpb_wrapper">
+                                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+                                <table id="myTable">
+                                        <% if(user_array.length>0) { %>
+                                  <tr class="header">
+                                    <th style="width:10%;">no.</th>
+                                    <th style="width:45%;">User Name</th>
+                                    <th style="width:45%;">User marks</th>
+                    
+                                  </tr>
+                                  <% for(var i=0 ;i<user_array.length;i++) {%>
+                                  <tr>
+                                        <td><%= i+1 %></td>
+                                        <td><%=  user_array[i].user_id.User_name %></td>
+                                        <td><%=  user_array[i].User_marks %></td>
+                                  </tr>
+                                  <% } %>
+                                  <% } else {%>
+                                    Not Record Found
+                                    <% } %>
+                                </table>
+                              
+                        </div>
+                    </div>
+                </div></div></div></div>
+                    </div><!-- .entry-content -->
+                    
+                </article><!-- #post-## --></div>      </div>    
+                </div>
+             
+      
+    <script>
+            function myFunction() {
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("myTable");
+              tr = table.getElementsByTagName("tr");
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }       
+              }
+            }
+            </script>
+    </body>
+</html>
+<%- include('footer'); -%>

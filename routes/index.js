@@ -9,6 +9,7 @@ var vb = require('../schema/vb');
 var angular = require('../schema/angular');
 var android = require('../schema/android');
 var html = require('../schema/html');
+var node = require('../schema/node');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,7 +21,7 @@ router.get('/clanguage', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
-    res.render('clanguage', { email: req.flash('successMessage') });
+    res.render('clanguage', { email: req.flash('alertmessage') });
 });
 
 router.get('/java', function(req, res, next) {
@@ -29,7 +30,7 @@ router.get('/java', function(req, res, next) {
     res.redirect('/login');
   } 
        
-  res.render('java', { email: req.flash('successMessage') });
+  res.render('java', { email: req.flash('alertmessage') });
 });
 
 router.get('/vb', function(req, res, next) {
@@ -37,7 +38,7 @@ router.get('/vb', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
-    res.render('vb', { email: req.flash('successMessage') });
+    res.render('vb', { email: req.flash('alertmessage') });
 });
 
 router.get('/php', function(req, res, next) {
@@ -45,7 +46,7 @@ router.get('/php', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
-    res.render('php', { email: req.flash('successMessage') });
+    res.render('php', { email: req.flash('alertmessage') });
 });
 
 router.get('/angular', function(req, res, next) {
@@ -53,7 +54,7 @@ router.get('/angular', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
-    res.render('angular', { email: req.flash('successMessage') });
+    res.render('angular', { email: req.flash('alertmessage') });
 });
 
 router.get('/android', function(req, res, next) {
@@ -61,7 +62,7 @@ router.get('/android', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
-    res.render('android', { email: req.flash('successMessage') });
+    res.render('android', { email: req.flash('alertmessage') });
 });
 
 router.get('/html', function(req, res, next) {
@@ -69,7 +70,7 @@ router.get('/html', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
-    res.render('html', { email: req.flash('successMessage') });
+    res.render('html', { email: req.flash('alertmessage') });
 });
 
 
@@ -79,15 +80,15 @@ router.get('/node', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   }  
-  res.render('node', { title: 'Express' });
+  res.render('node', { email: req.flash('alertmessage')  });
 });
 
 router.get('/register',function(req,res){
-res.render('Register',{ email: req.flash('successMessage') });
+res.render('Register',{ email: req.flash('alertmessage') });
 });
 
 router.get('/login',function(req,res){
-  res.render('login',{ email: req.flash('successMessage') });
+  res.render('login',{ email: req.flash('alertmessage') });
   });
 
   router.post('/signup', function (req, res, next) {
@@ -100,7 +101,7 @@ router.get('/login',function(req,res){
   
       console.log("Find One " + db_Users_array);
       if (db_Users_array) {
-        req.flash('successMessage', 'email already exists');
+        req.flash('alertmessage', 'email already exists');
          res.redirect('/register');
       
       }
@@ -155,7 +156,7 @@ router.get('/login',function(req,res){
   
       if (db_email == null) {
         console.log("If");
-        req.flash('successMessage', 'Email or Password are not found. please register');
+        req.flash('alertmessage', 'Email or Password are not found. please register');
         res.redirect('/login');
       }
       else if (db_email == email && db_password == password) {
@@ -166,7 +167,7 @@ router.get('/login',function(req,res){
       }
       else {
         console.log("Credentials wrong");
-        req.flash('successMessage', 'your Email id and password do not match. please try again');
+        req.flash('alertmessage', 'your Email id and password do not match. please try again');
          res.redirect('/login');
    
       }
@@ -174,6 +175,87 @@ router.get('/login',function(req,res){
    
     });
   });
+
+
+  router.get('/forgot_password', function(req, res, next) {
+    res.render('forgotpassword', { email: req.flash('alertmessage') });
+  });
+   
+  router.post('/forgot_password', function(req, res, next) {
+    var email = req.body.User_email; 
+  
+    console.log(req.body);
+    UsersModel.findOne({ "User_email": email }, function (err, db_Users_array) {
+  
+      console.log("Find One " + db_Users_array);
+  
+      if (db_Users_array) {
+        var db_email = db_Users_array.User_email;
+        var db_password = db_Users_array.User_password;
+  
+      }
+  
+      console.log("db_Users_array.User_email " + db_email);
+      console.log("db_Users_array.User_password " + db_password);
+  
+      if (db_email == null) {
+        console.log("If");
+        req.flash('alertmessage', 'Please enter a valid email address.');
+        res.redirect('/forgot_password');
+       
+      }
+      else if (db_email == email) {
+        "use strict";
+        // setup email data with unicode symbols
+    const nodemailer = require('nodemailer');
+      
+    // Generate test SMTP service account from ethereal.email
+    // Only needed if you don't have a real mail account for testing
+    nodemailer.createTestAccount((err, account) => {
+      // create reusable transporter object using the default SMTP transport
+      let transporter = nodemailer.createTransport({
+          host: 'smtp.gmail.com',
+          port: 587,
+          secure: false, // true for 465, false for other ports
+          auth: {
+              user: "crazy2engineers@gmail.com", // generated ethereal user
+              pass: "Crazy2@engineers" // generated ethereal password
+          }
+      });
+    
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: '"Programming Quiz" <foo@example.com>', // sender address
+        to: email, // list of receivers
+        subject: "Forgot Password", // Subject line
+        text: "Hello your password is "  + db_password, // plain text body
+        html: "Hello your password is "  + db_password // html body
+      };
+    
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Message sent: %s', info.messageId);
+          // Preview only available when sending through an Ethereal account
+          console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    res.redirect('/login');
+          // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+          // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+      });
+    });
+    
+      }
+      else {
+        console.log("Credentials wrong");
+        res.end("Login invalid");
+      }
+  
+   
+    });
+  });
+
   router.get('/User_display', function(req, res, next) {
     
   UsersModel.find(function(err,data){
@@ -256,7 +338,7 @@ res.redirect("/");
       console.log("Find One " + db_Users_array);
       if (db_Users_array) {
     
-        req.flash('successMessage', ' already save');
+        req.flash('alertmessage', ' already save');
          res.redirect('/clanguage');
       }
       else{
@@ -295,7 +377,7 @@ res.redirect("/");
       console.log("Find One " + db_Users_array);
       if (db_Users_array) {
     
-        req.flash('successMessage', ' already save');
+        req.flash('alertmessage', ' already save');
          res.redirect('/c');
       }
       else{
@@ -336,7 +418,7 @@ router.post('/javaprosee', function (req, res, next) {
     console.log("Find One " + db_Users_array);
     if (db_Users_array) {
   
-      req.flash('successMessage', ' already save');
+      req.flash('alertmessage', ' already save');
        res.redirect('/java');
     }
     else{
@@ -400,7 +482,7 @@ router.post('/phpprosee', function (req, res, next) {
     console.log("Find One " + db_Users_array);
     if (db_Users_array) {
   
-      req.flash('successMessage', ' already save');
+      req.flash('alertmessage', ' already save');
        res.redirect('/php');
     }
     else{
@@ -463,7 +545,7 @@ router.post('/vbprosee', function (req, res, next) {
     console.log("Find One " + db_Users_array);
     if (db_Users_array) {
   
-      req.flash('successMessage', ' already save');
+      req.flash('alertmessage', ' already save');
        res.redirect('/vb');
     }
     else{
@@ -527,7 +609,7 @@ router.post('/angularprosee', function (req, res, next) {
     console.log("Find One " + db_Users_array);
     if (db_Users_array) {
   
-      req.flash('successMessage', ' already save');
+      req.flash('alertmessage', ' already save');
        res.redirect('/angular');
     }
     else{
@@ -538,7 +620,7 @@ router.post('/angularprosee', function (req, res, next) {
         
     
       }
-      var data = java(mybodydata);
+      var data = angular(mybodydata);
     
       data.save(function (err) {
         if (err) {
@@ -580,7 +662,7 @@ router.get('/angularresult', function(req, res, next) {
 
 //*********************************ANDROID**************************//
 
-router.post('/angularprosee', function (req, res, next) {
+router.post('/androidprosee', function (req, res, next) {
   console.log("hardik");
   console.log(req.body);
   var id = req.session.userid; 
@@ -591,7 +673,7 @@ router.post('/angularprosee', function (req, res, next) {
     console.log("Find One " + db_Users_array);
     if (db_Users_array) {
   
-      req.flash('successMessage', ' already save');
+      req.flash('alertmessage', ' already save');
        res.redirect('/android');
     }
     else{
@@ -602,7 +684,7 @@ router.post('/angularprosee', function (req, res, next) {
         
     
       }
-      var data = java(mybodydata);
+      var data = android(mybodydata);
     
       data.save(function (err) {
         if (err) {
@@ -656,7 +738,7 @@ router.post('/htmlprosee', function (req, res, next) {
     console.log("Find One " + db_Users_array);
     if (db_Users_array) {
   
-      req.flash('successMessage', ' already save');
+      req.flash('alertmessage', ' already save');
        res.redirect('/html');
     }
     else{
@@ -667,7 +749,7 @@ router.post('/htmlprosee', function (req, res, next) {
         
     
       }
-      var data = java(mybodydata);
+      var data = html(mybodydata);
     
       data.save(function (err) {
         if (err) {
@@ -707,6 +789,71 @@ router.get('/htmlresult', function(req, res, next) {
   
 //******************End HTML *************************************//
 
+
+
+//*********************************HTML**************************//
+
+router.post('/nodeprosee', function (req, res, next) {
+  console.log("hardik");
+  console.log(req.body);
+  var id = req.session.userid; 
+
+  console.log(req.body);
+  node.findOne({ "user_id": id }, function (err, db_Users_array) {
+
+    console.log("Find One " + db_Users_array);
+    if (db_Users_array) {
+  
+      req.flash('alertmessage', ' already save');
+       res.redirect('/node');
+    }
+    else{
+      const mybodydata = {
+        user_id:req.session.userid,
+        User_marks: req.body.User_marks,
+        Course: "NODE",
+        
+    
+      }
+      var data = node(mybodydata);
+    
+      data.save(function (err) {
+        if (err) {
+          console.log("Error in Insert Record" + err);
+        } else {
+          res.redirect('/noderesult');
+        }
+      })
+    
+    }
+  });
+  //Create an Array 
+  
+});
+
+router.get('/noderesult', function(req, res, next) {
+  
+  node.find(function(err,data){
+    if(err)
+    res.json({message: 'There are no posts here.'});
+    console.log(data);
+    node.find({})
+    .populate('user_id')
+    .exec(function(err, data) {
+    console.log("full question deatils --------------------",data);
+    if(err){
+    console.log("Error In  Fetch Data " + err)
+  }
+  else{
+      console.log("***************************************************************",data);
+      res.render('noderesult',{  user_array : data});
+    }
+  });  
+    }).sort( { User_marks: -1 } );
+  
+  });
+  
+//******************End HTML *************************************//
   router.get('/cresult', function(req, res, next) {
   
     C.find(function(err,data){
@@ -758,7 +905,7 @@ router.get('/htmlresult', function(req, res, next) {
 
   // test code Flash//
   router.get('/test', function(req, res, next) {
-    req.flash('successMessage', 'You are successfully using req-flash');
+    req.flash('alertmessage', 'You are successfully using req-flash');
  
  
     res.redirect('/');
