@@ -1855,7 +1855,7 @@ form[name="search-course"] {
     box-sizing: border-box; }
   form[name="search-course"] .search-course-button {
     position: absolute;
-    top: 1px;
+   
     right: 1px;
     bottom: 1px;
     padding: 15px;
