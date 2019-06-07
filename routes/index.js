@@ -76,6 +76,29 @@ router.get('/html', function(req, res, next) {
     res.render('html', { email: req.flash('alertmessage') });
 });
 
+router.get('/css', function(req, res, next) {
+  var mysession = req.session.email;
+  if(!mysession){
+    res.redirect('/login');
+  } 
+    res.render('css', { email: req.flash('alertmessage') });
+});
+
+router.get('/jquery', function(req, res, next) {
+  var mysession = req.session.email;
+  if(!mysession){
+    res.redirect('/login');
+  } 
+    res.render('jquery', { email: req.flash('alertmessage') });
+});
+
+router.get('/bootstrap', function(req, res, next) {
+  var mysession = req.session.email;
+  if(!mysession){
+    res.redirect('/login');
+  } 
+    res.render('bootstrap', { email: req.flash('alertmessage') });
+});
 
 
 router.get('/node', function(req, res, next) {
