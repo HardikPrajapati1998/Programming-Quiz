@@ -10,7 +10,9 @@ var angular = require('../schema/angular');
 var android = require('../schema/android');
 var html = require('../schema/html');
 var node = require('../schema/node');
-
+var css = require('../schema/css');
+var jquery = require('../schema/jquery');
+var bootstrap = require('../schema/bootstrap');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index' );
@@ -21,6 +23,7 @@ router.get('/clanguage', function(req, res, next) {
   if(!mysession){
     res.redirect('/login');
   } 
+     
     res.render('clanguage', { email: req.flash('alertmessage') });
 });
 
@@ -791,7 +794,7 @@ router.get('/htmlresult', function(req, res, next) {
 
 
 
-//*********************************HTML**************************//
+//*********************************NODE**************************//
 
 router.post('/nodeprosee', function (req, res, next) {
   console.log("hardik");
@@ -853,7 +856,201 @@ router.get('/noderesult', function(req, res, next) {
   
   });
   
-//******************End HTML *************************************//
+//******************End NODE *************************************//
+
+//*********************************JQUERY**************************//
+
+router.post('/jqueryprosee', function (req, res, next) {
+  console.log("hardik");
+  console.log(req.body);
+  var id = req.session.userid; 
+
+  console.log(req.body);
+  jquery.findOne({ "user_id": id }, function (err, db_Users_array) {
+
+    console.log("Find One " + db_Users_array);
+    if (db_Users_array) {
+  
+      req.flash('alertmessage', ' already save');
+       res.redirect('/jquery');
+    }
+    else{
+      const mybodydata = {
+        user_id:req.session.userid,
+        User_marks: req.body.User_marks,
+        Course: "JQUERY",
+        
+    
+      }
+      var data = jquery(mybodydata);
+    
+      data.save(function (err) {
+        if (err) {
+          console.log("Error in Insert Record" + err);
+        } else {
+          res.redirect('/jqueryresult');
+        }
+      })
+    
+    }
+  });
+  //Create an Array 
+  
+});
+
+router.get('/jqueryresult', function(req, res, next) {
+  
+  jquery.find(function(err,data){
+    if(err)
+    res.json({message: 'There are no posts here.'});
+    console.log(data);
+    jquery.find({})
+    .populate('user_id')
+    .exec(function(err, data) {
+    console.log("full question deatils --------------------",data);
+    if(err){
+    console.log("Error In  Fetch Data " + err)
+  }
+  else{
+      console.log("***************************************************************",data);
+      res.render('jqueryresult',{  user_array : data});
+    }
+  });  
+    }).sort( { User_marks: -1 } );
+  
+  });
+  
+//******************End jquery *************************************//
+
+
+//*********************************bootstrap**************************//
+
+router.post('/bootstrapprosee', function (req, res, next) {
+  console.log("hardik");
+  console.log(req.body);
+  var id = req.session.userid; 
+
+  console.log(req.body);
+  bootstrap.findOne({ "user_id": id }, function (err, db_Users_array) {
+
+    console.log("Find One " + db_Users_array);
+    if (db_Users_array) {
+  
+      req.flash('alertmessage', ' already save');
+       res.redirect('/bootstrap');
+    }
+    else{
+      const mybodydata = {
+        user_id:req.session.userid,
+        User_marks: req.body.User_marks,
+        Course: "bootstrap",
+        
+    
+      }
+      var data = bootstrap(mybodydata);
+    
+      data.save(function (err) {
+        if (err) {
+          console.log("Error in Insert Record" + err);
+        } else {
+          res.redirect('/bootstrapresult');
+        }
+      })
+    
+    }
+  });
+  //Create an Array 
+  
+});
+
+router.get('/bootstrapresult', function(req, res, next) {
+  
+  bootstrap.find(function(err,data){
+    if(err)
+    res.json({message: 'There are no posts here.'});
+    console.log(data);
+    bootstrap.find({})
+    .populate('user_id')
+    .exec(function(err, data) {
+    console.log("full question deatils --------------------",data);
+    if(err){
+    console.log("Error In  Fetch Data " + err)
+  }
+  else{
+      console.log("***************************************************************",data);
+      res.render('bootstrapresult',{  user_array : data});
+    }
+  });  
+    }).sort( { User_marks: -1 } );
+  
+  });
+  
+//******************End jquery *************************************//
+
+//*********************************bootstrap**************************//
+
+router.post('/cssprosee', function (req, res, next) {
+  console.log("hardik");
+  console.log(req.body);
+  var id = req.session.userid; 
+
+  console.log(req.body);
+  css.findOne({ "user_id": id }, function (err, db_Users_array) {
+
+    console.log("Find One " + db_Users_array);
+    if (db_Users_array) {
+  
+      req.flash('alertmessage', ' already save');
+       res.redirect('/css');
+    }
+    else{
+      const mybodydata = {
+        user_id:req.session.userid,
+        User_marks: req.body.User_marks,
+        Course: "css",
+        
+    
+      }
+      var data = css(mybodydata);
+    
+      data.save(function (err) {
+        if (err) {
+          console.log("Error in Insert Record" + err);
+        } else {
+          res.redirect('/cssresult');
+        }
+      })
+    
+    }
+  });
+  //Create an Array 
+  
+});
+
+router.get('/cssresult', function(req, res, next) {
+  
+  css.find(function(err,data){
+    if(err)
+    res.json({message: 'There are no posts here.'});
+    console.log(data);
+    css.find({})
+    .populate('user_id')
+    .exec(function(err, data) {
+    console.log("full question deatils --------------------",data);
+    if(err){
+    console.log("Error In  Fetch Data " + err)
+  }
+  else{
+      console.log("***************************************************************",data);
+      res.render('cssresult',{  user_array : data});
+    }
+  });  
+    }).sort( { User_marks: -1 } );
+  
+  });
+  
+//******************End css *************************************//
+
   router.get('/cresult', function(req, res, next) {
   
     C.find(function(err,data){
@@ -908,7 +1105,7 @@ router.get('/noderesult', function(req, res, next) {
     req.flash('alertmessage', 'You are successfully using req-flash');
  
  
-    res.redirect('/');
+    res.render('test');
 });
 router.get('/home', function(req, res, next) {
   res.send(req.flash());
