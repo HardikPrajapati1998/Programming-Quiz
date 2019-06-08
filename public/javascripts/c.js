@@ -95,11 +95,11 @@
         correctAnswer: "A"
       },
       {
-        question: "2 - Which statement can print \n on the screen?",
+        question: "2 - Which statement can print \\n on the screen?",
         answers: {
           A: 'printf("n");',
-          B: 'printf("n\");',
-          C: 'printf("\\n");',
+          B: 'printf("n\\");',
+          C: 'printf("\\\\n");',
           D: 'printf("/n");'
         },
         correctAnswer: "C"
