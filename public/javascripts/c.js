@@ -99,7 +99,7 @@
         answers: {
           A: 'printf("n");',
           B: 'printf("n\\");',
-          C: 'printf("\\\n");',
+          C: 'printf("\\\\n");',
           D: 'printf("/n");'
         },
         correctAnswer: "C"
